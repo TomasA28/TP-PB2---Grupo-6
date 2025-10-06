@@ -7,56 +7,83 @@ import java.time.LocalDateTime;
 import org.junit.Test;
 
 import clasesProductivasDecoracionDeEventos.Casamiento;
+import clasesProductivasDecoracionDeEventos.Comunion;
+import clasesProductivasDecoracionDeEventos.Decoracion;
 import clasesProductivasDecoracionDeEventos.Evento;
-import clasesProductivasDecoracionDeEventos.Lugar;
+import clasesProductivasDecoracionDeEventos.Tamanio;
 
 public class TestDecoracionDeEventos {
-	//TESTs de Instancias de clase Evento
-	
-	//METODOS
+	// TESTs de Instancias de clase Evento
+
+	// METODOS
 //	calcularPrecioBase();
-	@Test
-	private void dadoQueTengoUnCasamientoCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto(){
-											// lugarDeEvento; fechaYHoraInicio; fechaYHoraFin; cantDeInvitados;
-		Evento casamiento = new Casamiento(Lugar.IGLESIA_CHICA, LocalDateTime.of(2025, 12, 12, 15, 00), LocalDateTime.of(2025, 12, 12, 23, 30), 25);
+	@Test 
+	public void dadoQueTengoUnaDecoracionCuandoLePasoElTamanioPorParametroObtengoElMontoCorrecto() {
+	
+		  
+		 Decoracion deco1 = new Simple(7000.);
+		 Decoracion deco2 =new Medio(14000.);
+		 Decoracion deco3 = new Premium(28000.);
+		 
+		 Double precioEsperado1 = 14000.;		 
+		 Double precioEsperado2 = 70000.;
+		 Double precioEsperado3 = 196000.;
+		 
+		 Double PrecioObtenido1 = deco1.CalcularPrecio(Tamanio.CHICO);
+		 Double PrecioObtenido2 = deco2.CalcularPrecio(Tamanio.MEDIANO);
+		 Double PrecioObtenido3 = deco3.CalcularPrecio(Tamanio.GRANDE);
 		
-		Double precioBaseEsperado =75000.;
-		Double precioBaseObtenido= casamiento.calcularPrecioBase();
+		assertEquals(precioEsperado1, PrecioObtenido1);
+		assertEquals(precioEsperado2, PrecioObtenido2);
+		assertEquals(precioEsperado3, PrecioObtenido3);
+	}
+
+	@Test
+	public void dadoQueTengoUnCasamientoCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		// lugarDeEvento; fechaYHoraInicio; fechaYHoraFin; cantDeInvitados;
+	}
+
+	@Test
+	public void dadoQueTengoUnCumpleaniosCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+
+	}
+
+	@Test
+	public void dadoQueTengoUnBabyShowerCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+
+	}
+
+	@Test
+	public void dadoQueTengoUnaComunionCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
+				LocalDateTime.of(2025, 9, 3, 22, 30), 120);
+
+		Double precioBaseEsperado = 339000.;
+		Double precioBaseObtenido = comunion.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
 	}
-	@Test
-	private void dadoQueTengoUnCumpleaniosCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
-		
-	}
-	@Test
-	private void dadoQueTengoUnBabyShowerCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() { 
-		
-	}
-	@Test
-	private void dadoQueTengoUnaComunionCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
-		
-	}
-	
+
 //	calcularPrecioFinal();
 	@Test
-	private void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoYServicioDeCateringCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
-		
+	public void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoYServicioDeCateringCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
+
 	}
+
 //	calcularReembolsoDeSeguro();
 	@Test
-	private void dadoQueTengoUnEventoCuandoCalculoElReembolsoDelSeguroObtengoElMontoEsperado() {
-		
+	public void dadoQueTengoUnEventoCuandoCalculoElReembolsoDelSeguroObtengoElMontoEsperado() {
+
 	}
-	
+
 //	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
 	@Test
-	private void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
-		
+	public void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
+
 	}
-	
+
 //	calcularFinalConDescuentoYReembolso();
 	@Test
-	private void dadoQueTengoUnEventoCuandoCalculoElPrecioFinalConDescuentoEnEfectivoYReembolsoDelSeguroObtengoElMontoEsperado() {
-		
+	public void dadoQueTengoUnEventoCuandoCalculoElPrecioFinalConDescuentoEnEfectivoYReembolsoDelSeguroObtengoElMontoEsperado() {
+
 	}
 }
