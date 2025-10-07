@@ -10,7 +10,6 @@ import org.junit.Test;
 import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.Casamiento;
 import clasesProductivasDecoracionDeEventos.Comunion;
-import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.Decoracion;
 import clasesProductivasDecoracionDeEventos.Evento;
 import clasesProductivasDecoracionDeEventos.GestorDeDecoracionEventos;
@@ -25,11 +24,12 @@ public class TestDecoracionDeEventos {
 	public void inicializacion() {
 
 		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
+		Decoracion packDecoPremium = new Premium(28000.);
 	}
 
 	// TESTs de Instancias de clase Evento
 	// METODOS
-	
+
 //	calcularPrecioBase();
 	@Test
 	public void dadoQueTengoUnaDecoracionCuandoLePasoElTamanioPorParametroObtengoElMontoCorrecto() {
@@ -61,12 +61,12 @@ public class TestDecoracionDeEventos {
 		Tamanio lugar = Tamanio.CHICO;
 		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
 		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
-
+		Decoracion packDeco = new Premium(28000.);
 		Integer cantDeInvitados = 60;
 
-		Evento cumpleanio = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+		Evento cumpleanio = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 
-		Double precioBaseEsperado = 64000.0;
+		Double precioBaseEsperado =148000.;
 		Double precioBaseObtenido = cumpleanio.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
 
@@ -79,12 +79,23 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueTengoUnaComunionCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		Decoracion packDeco = new Medio(14000.);
 		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
-				LocalDateTime.of(2025, 9, 3, 22, 30), 120);
+				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDeco);
 
-		Double precioBaseEsperado = 339000.;
+		Double precioBaseEsperado = 322050.;
 		Double precioBaseObtenido = comunion.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
+	}
+
+// agregar decoraciones adicionales 
+	@Test
+	public void dadoQueExisteUnEventoCuandoQuieroAgregarServiciosAdicionalesObtengoQueSoloSePuedenAgregarUnaVezPorEvento() {
+		Decoracion packDecoPremium = new Premium(28000.);
+		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
+				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDecoPremium);
+        
+		
 	}
 
 //  agregarEvento();
@@ -92,13 +103,13 @@ public class TestDecoracionDeEventos {
 	public void dadoQueExisteUnGestorDeDecoracionEventosAlAgregarUnEventoDelTipoCumpleañosExitosamenteElMetodoDevuelveTrue() {
 
 		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
-
+		Decoracion packDeco = new Simple(700.);
 		Tamanio lugar = Tamanio.CHICO;
 		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
 		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
 		Integer cantDeInvitados = 60;
 
-		Evento evento = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+		Evento evento = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 
 		Boolean seAgrego = gestor.agregarEvento(evento);
 		assertTrue(seAgrego);
@@ -114,13 +125,13 @@ public class TestDecoracionDeEventos {
 //	calcularReembolsoDeSeguro();
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElReembolsoDelSeguroObtengoElMontoEsperado() {
-        
+
 	}
 
 //	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
-    
+
 	}
 
 //	calcularFinalConDescuentoYReembolso();
