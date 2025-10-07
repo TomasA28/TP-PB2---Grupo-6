@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 	public class Casamiento extends Evento {
 
 		public Casamiento(Tamanio tamanio, LocalDateTime fechaYHoraInicio, LocalDateTime fechaYHoraFin,
-		int cantDeInvitados) {
-		super(tamanio, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+		int cantDeInvitados, Decoracion packDeco) {
+		super(tamanio, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 			// TODO Auto-generated constructor stub
 		}
 	

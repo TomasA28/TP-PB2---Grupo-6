@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 public class Cumpleanio extends Evento {
 
 	public Cumpleanio(Tamanio lugar, LocalDateTime fechaYHoraInicio, LocalDateTime fechaYHoraFin,
-			Integer cantDeInvitados) {
-		super(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+			Integer cantDeInvitados, Decoracion packDeco) {
+		super(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -16,8 +16,8 @@ public class Cumpleanio extends Evento {
 		Duration duracion = Duration.between(getFechaYHoraInicio(), getFechaYHoraFin());
 		Double cantHoras = (double) duracion.toHours();
 
-		Decoracion deco1 = new Premium(7000.0);
-		Double precioDeco = deco1.CalcularPrecio(getTamanio());
+		
+		Double precioDeco = this.getPackDeco().CalcularPrecio(getTamanio());
 
 		Double precioBaseConAumento = this.getPrecioBase() * 1.20;
 		Double precio = (precioBaseConAumento + precioDeco) * cantHoras;
