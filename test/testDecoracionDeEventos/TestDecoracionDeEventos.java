@@ -118,12 +118,11 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueExisteUnEventoCuandoQuieroAgregarUnServicioAdicionalDosVecesElResultadoEsFalse() {
-<<<<<<< HEAD
+
 		// RECORDATORIO: EXCEPTION PORQUE NO SE HIZO OVERRIDE EN HASHCODE Y EQUALS
-=======
-		//RECORDATORIO: EXCEPTION PORQUE NO SE HIZO OVERRIDE EN HASHCODE Y EQUALS
-		
->>>>>>> main
+
+		// RECORDATORIO: EXCEPTION PORQUE NO SE HIZO OVERRIDE EN HASHCODE Y EQUALS
+
 		Decoracion packDecoPremium = new Premium(28000.);
 		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
 				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDecoPremium);
@@ -143,31 +142,29 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void test1() {
-
 	}
-<<<<<<< HEAD
 
 	public void test2() {
 
 	}
 
-=======
 	@Test
 	public void dadoQueExisteLaClaseCateringCuandoCalculoElPrecioObtengoElResultadoCorrecto() {
 		ServicioAdicional catering = new Catering();
 		Decoracion packDecoPremium = new Premium(28000.);
 		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
 				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDecoPremium);
-		
-		//2000 * 120 
+
+		// 2000 * 120
 		Double precioEsperado = 840000.;
 		Double precioObtenido = catering.calcularPrecio(comunion.getCantDeInvitados());
-		
+
 		assertEquals(precioEsperado, precioObtenido);
-		
+
 	}
+
 	@Test
->>>>>>> main
+
 	public void test3() {
 
 	}
