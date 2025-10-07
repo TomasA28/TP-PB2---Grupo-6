@@ -196,6 +196,23 @@ public class TestDecoracionDeEventos {
 	@Test
 	public void dadoQueTengoUnGestorDeEventosCuandoQuieroAgregarUnEventoSuperponiendoLosTiemposDeUnEventoYaExistenteElEventoNoSeAgrega() {
 
+		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
+		LocalDateTime fechaYHoraInicio1 = LocalDateTime.of(2025, 10, 01, 18, 00);
+		LocalDateTime fechaYHoraFin1 = LocalDateTime.of(2025, 10, 01, 20, 00);
+		Decoracion packDeco = new Premium(28000.);
+		Evento evento = new Cumpleanio(Tamanio.MEDIANO, fechaYHoraInicio1, fechaYHoraFin1, 40, packDeco);
+		
+		LocalDateTime fechaYHoraInicio2 = LocalDateTime.of(2025, 10, 01, 19, 00);
+		LocalDateTime fechaYHoraFin2 = LocalDateTime.of(2025, 10, 01, 21, 00);
+		Decoracion packDeco2 = new Premium(28000.);
+		Evento evento2 = new Cumpleanio(Tamanio.MEDIANO, fechaYHoraInicio1, fechaYHoraFin1, 40, packDeco2);
+		
+		Boolean seAgrego1 = gestor.agregarEvento(evento);
+		Boolean seAgrego2 = gestor.agregarEvento(evento2);
+		
+		assertTrue(seAgrego1);
+		assertFalse(seAgrego2);
+		
 	}
 
 //	calcularPrecioFinal();
