@@ -1,5 +1,6 @@
 package clasesProductivasDecoracionDeEventos;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 	//ATRIBUTOS
 	public class Casamiento extends Evento {
@@ -7,7 +8,6 @@ import java.time.LocalDateTime;
 		public Casamiento(Tamanio tamanio, LocalDateTime fechaYHoraInicio, LocalDateTime fechaYHoraFin,
 		int cantDeInvitados, Decoracion packDeco) {
 		super(tamanio, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
-			// TODO Auto-generated constructor stub
 		}
 	
 	//GET Y SET
@@ -15,7 +15,13 @@ import java.time.LocalDateTime;
 	//METODOS
 	@Override
 	public Double calcularPrecioBase() {
-		// TODO Auto-generated method stub
-		return super.calcularPrecioBase();
+		Double porcentajeAgregado =  this.getPrecioBase() * 1.5;
+		
+		Duration duracionDeEvento = Duration.between(getFechaYHoraInicio(), getFechaYHoraFin());
+		Double cantDeHoras = (double) duracionDeEvento.toHours();
+		Double precioConHoras = porcentajeAgregado * cantDeHoras;
+		
+		Double precioCalculado = precioConHoras + this.getPackDeco().CalcularPrecio(getTamanio());
+		return precioCalculado;
 	}
 }

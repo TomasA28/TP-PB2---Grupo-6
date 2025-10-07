@@ -32,7 +32,6 @@ public class TestDecoracionDeEventos {
 		Decoracion packDecoPremium = new Premium(28000.);
 	}
 
-	
 	//	Testeo de Precios de Decoracion
 	@Test
 	public void dadoQueTengoUnaDecoracionCuandoLePasoElTamanioPorParametroObtengoElMontoCorrecto() {
@@ -58,7 +57,15 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueTengoUnCasamientoCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
-		// lugarDeEvento; fechaYHoraInicio; fechaYHoraFin; cantDeInvitados;
+		Tamanio tamanioDelLugar = Tamanio.MEDIANO;
+		Decoracion decoracion = new Simple(7000.);
+		Evento casamiento = new Casamiento(tamanioDelLugar, LocalDateTime.of(2026, 8, 10, 8, 30),
+				LocalDateTime.of(2026, 8, 10, 15, 45), 23, decoracion);
+		
+		Double precioBaseEsperado = 192500.;
+		Double precioBaseObtenido = casamiento.calcularPrecioBase();
+		assertEquals(precioBaseEsperado, precioBaseObtenido);
+		
 	}
 
 	@Test
