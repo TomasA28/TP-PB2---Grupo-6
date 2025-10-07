@@ -1,6 +1,7 @@
 package clasesProductivasDecoracionDeEventos;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 
 
 public abstract class Evento {
@@ -11,6 +12,7 @@ public abstract class Evento {
 	private Integer cantDeInvitados;
 	final private Integer precioBase = 15000;
 	private Decoracion packDeco;
+	 private HashSet<ServicioAdicional> serviciosAdicional = new HashSet<>();
 
 	// CONSTRUCTOR
 	public Evento(Tamanio lugar, LocalDateTime fechaYHoraInicio, LocalDateTime fechaYHoraFin, int cantDeInvitados,
@@ -51,4 +53,11 @@ public abstract class Evento {
 		return null;
 	}
 
+	public void agregarServicioAlEvento(ServicioAdicional servicioAdicional) {
+		this.serviciosAdicional.add(servicioAdicional);
+	};
+
+	public HashSet<ServicioAdicional> getServiciosAdicional() {
+		return serviciosAdicional;
+	}
 }
