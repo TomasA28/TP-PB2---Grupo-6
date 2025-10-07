@@ -1,11 +1,7 @@
-package testDecoracionDeEventos;
+package clasesProductivasDecoracionDeEventos;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-
-import clasesProductivasDecoracionDeEventos.Decoracion;
-import clasesProductivasDecoracionDeEventos.Evento;
-import clasesProductivasDecoracionDeEventos.Tamanio;
 
 public class Cumpleanio extends Evento {
 
