@@ -4,8 +4,6 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import testDecoracionDeEventos.Medio;
-
 public class Comunion extends Evento {
 
 	public Comunion(Tamanio lugar, LocalDateTime fechaYHoraInicio, LocalDateTime fechaYHoraFin, int cantDeInvitados) {

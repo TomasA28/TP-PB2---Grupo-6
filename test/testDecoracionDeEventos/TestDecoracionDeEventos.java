@@ -10,6 +10,9 @@ import clasesProductivasDecoracionDeEventos.Casamiento;
 import clasesProductivasDecoracionDeEventos.Comunion;
 import clasesProductivasDecoracionDeEventos.Decoracion;
 import clasesProductivasDecoracionDeEventos.Evento;
+import clasesProductivasDecoracionDeEventos.Medio;
+import clasesProductivasDecoracionDeEventos.Premium;
+import clasesProductivasDecoracionDeEventos.Simple;
 import clasesProductivasDecoracionDeEventos.Tamanio;
 
 public class TestDecoracionDeEventos {
@@ -66,7 +69,10 @@ public class TestDecoracionDeEventos {
 //	calcularPrecioFinal();
 	@Test
 	public void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoYServicioDeCateringCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
-
+		Decoracion decoBasico = new Simple(7000.);
+		Evento cumpleanios = new Cumpleanios(Tamanio.MEDIANO, decoBasico, LocalDateTime.of(2025, 12, 12, 13, 30), 
+				LocalDateTime.of(2025, 12, 13, 03, 00), 45);
+		cumpleanios.agregarServicioAlEvento();
 	}
 
 //	calcularReembolsoDeSeguro();
