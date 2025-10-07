@@ -1,7 +1,4 @@
-package testDecoracionDeEventos;
-
-import clasesProductivasDecoracionDeEventos.Decoracion;
-import clasesProductivasDecoracionDeEventos.Tamanio;
+package clasesProductivasDecoracionDeEventos;
 
 public class Medio extends Decoracion {
 
