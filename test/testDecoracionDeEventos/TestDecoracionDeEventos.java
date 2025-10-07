@@ -10,6 +10,7 @@ import org.junit.Test;
 import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.Casamiento;
 import clasesProductivasDecoracionDeEventos.Comunion;
+import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.Decoracion;
 import clasesProductivasDecoracionDeEventos.Evento;
 import clasesProductivasDecoracionDeEventos.GestorDeDecoracionEventos;
@@ -113,13 +114,13 @@ public class TestDecoracionDeEventos {
 //	calcularReembolsoDeSeguro();
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElReembolsoDelSeguroObtengoElMontoEsperado() {
-
+        
 	}
 
 //	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
-
+    
 	}
 
 //	calcularFinalConDescuentoYReembolso();
