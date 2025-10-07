@@ -1,12 +1,6 @@
 package clasesProductivasDecoracionDeEventos;
 
-public abstract class ServicioAdicional {
-
-	// ATRIBUTOS
-
+public interface ServicioAdicional {
 	// METODOS
-	public Double calcularPrecio(Integer cantDeInvitados) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Double calcularPrecio(Integer cantDeInvitados);
 }
