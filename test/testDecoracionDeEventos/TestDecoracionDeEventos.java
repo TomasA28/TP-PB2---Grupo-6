@@ -65,7 +65,7 @@ public class TestDecoracionDeEventos {
 		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
 		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
 		Decoracion packDeco = new Premium(28000.);
-		Integer cantDeInvitados = 60;
+		Integer cantDeInvitados = 30;
 
 		Evento cumpleanio = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 
