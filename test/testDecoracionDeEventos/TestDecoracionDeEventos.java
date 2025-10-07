@@ -28,7 +28,7 @@ public class TestDecoracionDeEventos {
 
 	// TESTs de Instancias de clase Evento
 	// METODOS
-	
+
 //	calcularPrecioBase();
 	@Test
 	public void dadoQueTengoUnaDecoracionCuandoLePasoElTamanioPorParametroObtengoElMontoCorrecto() {
@@ -101,6 +101,24 @@ public class TestDecoracionDeEventos {
 
 		Boolean seAgrego = gestor.agregarEvento(evento);
 		assertTrue(seAgrego);
+
+	}
+
+	@Test
+	public void dadoQueExisteUnEventoCuandoLoCanceloDejaDeEstarRegistrado() {
+		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
+
+		Tamanio lugar = Tamanio.CHICO;
+		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
+		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
+		Integer cantDeInvitados = 60;
+
+		Evento evento = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+
+		Boolean seAgrego = gestor.agregarEvento(evento);
+		Boolean seCancelo = gestor.cancelarEvento(evento);
+
+		assertTrue(seCancelo);
 
 	}
 

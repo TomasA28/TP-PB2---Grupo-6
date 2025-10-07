@@ -15,7 +15,9 @@ public class GestorDeDecoracionEventos {
 		return this.eventos.add(evento);
 	}
 
-
+	public Boolean cancelarEvento(Evento evento) {
+		return this.eventos.remove(evento);
+	}
 
 
 
