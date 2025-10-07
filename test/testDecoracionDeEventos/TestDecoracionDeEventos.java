@@ -60,11 +60,11 @@ public class TestDecoracionDeEventos {
 		Decoracion decoracion = new Simple(7000.);
 		Evento casamiento = new Casamiento(tamanioDelLugar, LocalDateTime.of(2026, 8, 10, 8, 30),
 				LocalDateTime.of(2026, 8, 10, 15, 45), 23, decoracion);
-
+		
 		Double precioBaseEsperado = 192500.;
 		Double precioBaseObtenido = casamiento.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
-
+		
 	}
 
 	@Test
