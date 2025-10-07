@@ -45,6 +45,17 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueTengoUnCumpleaniosCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		Tamanio lugar = Tamanio.CHICO;
+		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
+		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);;
+		Integer cantDeInvitados = 80;
+		
+		Evento cumpleanio = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados);
+		
+		Double precioBaseEsperado = 46000.0;
+		Double precioBaseObtenido = cumpleanio.calcularPrecioBase();
+//		assertEquals(precioBaseEsperado, precioBaseObtenido);
+		
 
 	}
 
