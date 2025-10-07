@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 
-import org.junit.Before;
 import org.junit.Test;
 import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.AnimacionAdultos;
@@ -24,13 +23,6 @@ import clasesProductivasDecoracionDeEventos.Simple;
 import clasesProductivasDecoracionDeEventos.Tamanio;
 
 public class TestDecoracionDeEventos {
-
-	@Before
-	public void inicializacion() {
-
-		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
-		Decoracion packDecoPremium = new Premium(28000.);
-	}
 
 	@Test
 	public void dadoQueTengoUnaDecoracionCuandoLePasoElTamanioPorParametroObtengoElMontoCorrecto() {
@@ -151,10 +143,7 @@ public class TestDecoracionDeEventos {
 	public void test1() {
 	}
 
-	public void test2() {
-
-	}
-
+	
 	@Test
 	public void dadoQueExisteLaClaseCateringCuandoCalculoElPrecioObtengoElResultadoCorrecto() {
 		ServicioAdicional catering = new Catering();
@@ -171,9 +160,16 @@ public class TestDecoracionDeEventos {
 	}
 
 	@Test
-
-	public void test3() {
-
+	public void dadoQueTengoUnaInstanciaDeAnimacionParaChicosCuandoCalculoSuPrecioObtengoElMontoEsperado() {
+		ServicioAdicional animacionParaChicos = new AnimacionChicos();
+		Decoracion packDecoMedio = new Medio(14000.);
+		Evento cumpleanios = new Cumpleanio(Tamanio.CHICO, LocalDateTime.of(2025, 10, 06, 20, 30),
+				LocalDateTime.of(2025, 10, 07, 06, 00), 24, packDecoMedio);
+		
+		Double precioEsperado = 15000.;
+		Double precioObtenido = animacionParaChicos.calcularPrecio(cumpleanios.getCantDeInvitados());
+		
+		assertEquals(precioEsperado, precioObtenido);
 	}
 
 	// TESTS DE GESTOR DE EVENTOS:
