@@ -18,7 +18,15 @@ public class Medio extends Decoracion {
 	@Override
 	public String Descripcion() {
 		
-		return "decoracion de eevento medio. incluye globos, manteles de tela, etc" ;
+		return "Decoracion de Evento Medio:"
+				+ " Centros de mesa elaborados"
+				+ " Guirnaldas"
+				+ " Telas decorativas"
+				+ " Carteleria personalizada"
+				+ " Iluminacion basica"
+				+ " Elementos decorativos tematicos" ;
 	}
+
+	
 
 }
