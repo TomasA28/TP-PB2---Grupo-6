@@ -15,13 +15,15 @@ import java.time.LocalDateTime;
 	//METODOS
 	@Override
 	public Double calcularPrecioBase() {
-		Double porcentajeAgregado =  this.getPrecioBase() * 1.5;
-		
 		Duration duracionDeEvento = Duration.between(getFechaYHoraInicio(), getFechaYHoraFin());
 		Double cantDeHoras = (double) duracionDeEvento.toHours();
-		Double precioConHoras = porcentajeAgregado * cantDeHoras;
 		
-		Double precioCalculado = precioConHoras + this.getPackDeco().CalcularPrecio(getTamanio());
+		Double porcentajeAgregado =  this.getPrecioBase() * 1.5;
+		
+		Double precioDeco = this.getPackDeco().CalcularPrecio(getTamanio());
+		
+		Double precioCalculado = (porcentajeAgregado + precioDeco) * cantDeHoras;
+		
 		return precioCalculado;
 	}
 }

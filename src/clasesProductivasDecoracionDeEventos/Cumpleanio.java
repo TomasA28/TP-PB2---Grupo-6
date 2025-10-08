@@ -24,5 +24,4 @@ public class Cumpleanio extends Evento {
 		//((15000 * 1.20=) 18000 + 14000) * 2
 		return precio;
 	}
-
 }
