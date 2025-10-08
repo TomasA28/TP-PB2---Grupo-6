@@ -21,7 +21,7 @@ public class Cumpleanio extends Evento {
 
 		Double precioBaseConAumento = this.getPrecioBase() * 1.20;
 		Double precio = (precioBaseConAumento + precioDeco) * cantHoras;
-		//((15000 * 1.20=) 18000 + 14000) * 2
+		
 		return precio;
 	}
 }

@@ -10,6 +10,7 @@ import org.junit.Test;
 import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.AnimacionAdultos;
 import clasesProductivasDecoracionDeEventos.AnimacionChicos;
+import clasesProductivasDecoracionDeEventos.BabyShower;
 import clasesProductivasDecoracionDeEventos.Casamiento;
 import clasesProductivasDecoracionDeEventos.Catering;
 import clasesProductivasDecoracionDeEventos.Comunion;
@@ -45,7 +46,6 @@ public class TestDecoracionDeEventos {
 	}
 
 	// TESTs de Precio Base de Instancias de Evento
-
 	@Test
 	public void dadoQueTengoUnCasamientoCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
 		Tamanio tamanioDelLugar = Tamanio.MEDIANO;
@@ -77,6 +77,17 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueTengoUnBabyShowerCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		Tamanio lugar = Tamanio.GRANDE;
+		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 05, 16, 00);
+		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 05, 19, 30);
+		Decoracion packDeco = new Premium(28000.);
+		Integer cantDeInvitados = 75;
+
+		Evento babyShower = new BabyShower(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
+
+		Double precioBaseEsperado = 653000.0;
+		Double precioBaseObtenido = babyShower.calcularPrecioBase();
+		assertEquals(precioBaseEsperado, precioBaseObtenido);
 
 	}
 
@@ -118,10 +129,6 @@ public class TestDecoracionDeEventos {
 	@Test
 	public void dadoQueExisteUnEventoCuandoQuieroAgregarUnServicioAdicionalDosVecesElResultadoEsFalse() {
 
-		// RECORDATORIO: EXCEPTION PORQUE NO SE HIZO OVERRIDE EN HASHCODE Y EQUALS
-
-		// RECORDATORIO: EXCEPTION PORQUE NO SE HIZO OVERRIDE EN HASHCODE Y EQUALS
-
 		Decoracion packDecoPremium = new Premium(28000.);
 		Evento comunion = new Comunion(Tamanio.GRANDE, LocalDateTime.of(2025, 9, 3, 19, 0),
 				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDecoPremium);
@@ -138,11 +145,6 @@ public class TestDecoracionDeEventos {
 	}
 
 	// Calcular precio de Servicios Adicionales
-
-	@Test
-	public void test1() {
-	}
-
 	@Test
 	public void dadoQueExisteLaClaseCateringCuandoCalculoElPrecioObtengoElResultadoCorrecto() {
 		ServicioAdicional catering = new Catering();
@@ -153,6 +155,20 @@ public class TestDecoracionDeEventos {
 		// 2000 * 120
 		Double precioEsperado = 840000.;
 		Double precioObtenido = catering.calcularPrecio(comunion.getCantDeInvitados());
+
+		assertEquals(precioEsperado, precioObtenido);
+
+	}
+
+	@Test
+	public void dadoQueTengoUnaInstanciaDeAnimacionParaAdultosCuandoCalculoSuPrecioObtengoElMontoEsperado() {
+
+		ServicioAdicional animacionParaAdultos = new AnimacionAdultos();
+		Decoracion packDecoMedio = new Medio(14000.);
+		Evento cumpleanios = new Cumpleanio(Tamanio.CHICO, LocalDateTime.of(2025, 10, 06, 20, 30),
+				LocalDateTime.of(2025, 10, 07, 06, 00), 24, packDecoMedio);
+		Double precioEsperado = 40000.;
+		Double precioObtenido = animacionParaAdultos.calcularPrecio(cumpleanios.getCantDeInvitados());
 
 		assertEquals(precioEsperado, precioObtenido);
 
@@ -171,7 +187,7 @@ public class TestDecoracionDeEventos {
 		assertEquals(precioEsperado, precioObtenido);
 	}
 
-	// TESTS DE GESTOR DE EVENTOS:
+	// TESTS DE GESTOR DE EVENTOS
 	@Test
 	public void dadoQueExisteUnGestorDeDecoracionEventosAlAgregarUnEventoDelTipoCumpleañosExitosamenteElMetodoDevuelveTrue() {
 
@@ -226,7 +242,7 @@ public class TestDecoracionDeEventos {
 
 	}
 
-//	calcularPrecioFinal();
+	// CALCULAR PRECIO FINAL
 	@Test
 	public void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoServicioDeCateringYAnimacionParaChicosCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
 		Decoracion decoracionBasica = new Simple(7000.);
@@ -244,7 +260,7 @@ public class TestDecoracionDeEventos {
 
 	}
 
-//	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
+	// CALCULAR DESCUENTO EN EFECTIVO (10% de descuento)
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
 
