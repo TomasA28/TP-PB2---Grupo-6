@@ -11,6 +11,7 @@ import org.junit.Test;
 import clasesProductivasDecoracionDeEventos.Cumpleanio;
 import clasesProductivasDecoracionDeEventos.AnimacionAdultos;
 import clasesProductivasDecoracionDeEventos.AnimacionChicos;
+import clasesProductivasDecoracionDeEventos.BabyShower;
 import clasesProductivasDecoracionDeEventos.Casamiento;
 import clasesProductivasDecoracionDeEventos.Catering;
 import clasesProductivasDecoracionDeEventos.Comunion;
@@ -85,6 +86,13 @@ public class TestDecoracionDeEventos {
 
 	@Test
 	public void dadoQueTengoUnBabyShowerCuandoCalculoSuPrecioBaseObtengoElMontoCorrecto() {
+		Decoracion packDeco = new Medio(14000.);
+		Evento babyShower = new BabyShower(Tamanio.MEDIANO, LocalDateTime.of(2025, 9, 3, 19, 0),
+				LocalDateTime.of(2025, 9, 3, 22, 30), 120, packDeco);
+		
+		Double precioBaseEsperado = 275000.;
+		Double precioBaseObtenido = babyShower.calcularPrecioBase();
+		assertEquals(precioBaseEsperado, precioBaseObtenido);
 
 	}
 
