@@ -52,11 +52,11 @@ public class TestDecoracionDeEventos {
 		Decoracion decoracion = new Simple(7000.);
 		Evento casamiento = new Casamiento(tamanioDelLugar, LocalDateTime.of(2026, 8, 10, 8, 30),
 				LocalDateTime.of(2026, 8, 10, 15, 45), 23, decoracion);
-		
+
 		Double precioBaseEsperado = 402500.;
 		Double precioBaseObtenido = casamiento.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
-		
+
 	}
 
 	@Test
@@ -143,7 +143,6 @@ public class TestDecoracionDeEventos {
 	public void test1() {
 	}
 
-	
 	@Test
 	public void dadoQueExisteLaClaseCateringCuandoCalculoElPrecioObtengoElResultadoCorrecto() {
 		ServicioAdicional catering = new Catering();
@@ -165,10 +164,10 @@ public class TestDecoracionDeEventos {
 		Decoracion packDecoMedio = new Medio(14000.);
 		Evento cumpleanios = new Cumpleanio(Tamanio.CHICO, LocalDateTime.of(2025, 10, 06, 20, 30),
 				LocalDateTime.of(2025, 10, 07, 06, 00), 24, packDecoMedio);
-		
+
 		Double precioEsperado = 15000.;
 		Double precioObtenido = animacionParaChicos.calcularPrecio(cumpleanios.getCantDeInvitados());
-		
+
 		assertEquals(precioEsperado, precioObtenido);
 	}
 
@@ -177,16 +176,32 @@ public class TestDecoracionDeEventos {
 	public void dadoQueExisteUnGestorDeDecoracionEventosAlAgregarUnEventoDelTipoCumpleañosExitosamenteElMetodoDevuelveTrue() {
 
 		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
-		Decoracion packDeco = new Simple(700.);
+		Decoracion packDeco = new Simple(700.0);
 		Tamanio lugar = Tamanio.CHICO;
 		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
 		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
-		Integer cantDeInvitados = 60;
+		Integer cantDeInvitados = 40;
 
 		Evento evento = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
 
 		Boolean seAgrego = gestor.agregarEvento(evento);
 		assertTrue(seAgrego);
+	}
+
+	@Test
+	public void dadoQueExisteUnGestorDeDecoracionEventosAlAgregarUnEventoDelTipoCumpleañosExitosamenteCuandoLoCanceloDejaDeEstarRegistrado() {
+		GestorDeDecoracionEventos gestor = new GestorDeDecoracionEventos();
+		Decoracion packDeco = new Simple(700.0);
+		Tamanio lugar = Tamanio.CHICO;
+		LocalDateTime fechaYHoraInicio = LocalDateTime.of(2025, 10, 01, 18, 00);
+		LocalDateTime fechaYHoraFin = LocalDateTime.of(2025, 10, 01, 20, 30);
+		Integer cantDeInvitados = 30;
+
+		Evento evento = new Cumpleanio(lugar, fechaYHoraInicio, fechaYHoraFin, cantDeInvitados, packDeco);
+
+		Boolean seAgrego = gestor.agregarEvento(evento);
+		Boolean seCancelo = gestor.cancelarEvento(evento);
+		assertTrue(seCancelo);
 	}
 
 	@Test
@@ -197,18 +212,18 @@ public class TestDecoracionDeEventos {
 		LocalDateTime fechaYHoraFin1 = LocalDateTime.of(2025, 10, 01, 20, 00);
 		Decoracion packDeco = new Premium(28000.);
 		Evento evento = new Cumpleanio(Tamanio.MEDIANO, fechaYHoraInicio1, fechaYHoraFin1, 40, packDeco);
-		
+
 		LocalDateTime fechaYHoraInicio2 = LocalDateTime.of(2025, 10, 01, 19, 00);
 		LocalDateTime fechaYHoraFin2 = LocalDateTime.of(2025, 10, 01, 21, 00);
 		Decoracion packDeco2 = new Premium(28000.);
-		Evento evento2 = new Cumpleanio(Tamanio.MEDIANO, fechaYHoraInicio1, fechaYHoraFin1, 40, packDeco2);
-		
+		Evento evento2 = new Cumpleanio(Tamanio.MEDIANO, fechaYHoraInicio2, fechaYHoraFin2, 40, packDeco2);
+
 		Boolean seAgrego1 = gestor.agregarEvento(evento);
 		Boolean seAgrego2 = gestor.agregarEvento(evento2);
-		
+
 		assertTrue(seAgrego1);
 		assertFalse(seAgrego2);
-		
+
 	}
 
 //	calcularPrecioFinal();
@@ -217,21 +232,35 @@ public class TestDecoracionDeEventos {
 		Decoracion decoracionBasica = new Simple(7000.);
 		Catering catering = new Catering();
 		AnimacionChicos animacionParaChicos = new AnimacionChicos();
-		
+
 		Evento cumpleanios = new Cumpleanio(Tamanio.MEDIANO, LocalDateTime.of(2025, 12, 12, 11, 50),
 				LocalDateTime.of(2025, 12, 12, 15, 30), 37, decoracionBasica);
 		cumpleanios.agregarServicioAlEvento(catering);
 		cumpleanios.agregarServicioAlEvento(animacionParaChicos);
-		
+
 		Double PrecioFinalEsperado = 443000.;
 		Double PrecioFinalobtenido = cumpleanios.calcularPrecioFinal();
 		assertEquals(PrecioFinalEsperado, PrecioFinalobtenido);
-		
+
 	}
 
 //	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
 	@Test
 	public void dadoQueTengoUnEventoCuandoCalculoElDescuentoEnEfectivoObtengoElMontoEsperado() {
+
+		Decoracion decoracion = new Medio(14000.0);
+		Catering catering = new Catering();
+		AnimacionAdultos animacionParaAdultos = new AnimacionAdultos();
+
+		Evento cumpleanios = new Cumpleanio(Tamanio.MEDIANO, LocalDateTime.of(2025, 12, 12, 17, 00),
+				LocalDateTime.of(2025, 12, 12, 20, 30), 45, decoracion);
+
+		cumpleanios.agregarServicioAlEvento(catering);
+		cumpleanios.agregarServicioAlEvento(animacionParaAdultos);
+
+		Double PrecioFinalEsperadoConDescuento = 557100.0;
+		Double PrecioFinalobtenidoConDescuento = cumpleanios.calcularPrecioFinal() * 0.9;
+		assertEquals(PrecioFinalEsperadoConDescuento, PrecioFinalobtenidoConDescuento);
 
 	}
 }
