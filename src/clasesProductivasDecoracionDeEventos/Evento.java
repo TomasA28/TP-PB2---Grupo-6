@@ -60,4 +60,14 @@ public abstract class Evento {
 	public HashSet<ServicioAdicional> getServiciosAdicional() {
 		return serviciosAdicional;
 	}
+
+	public Double calcularPrecioFinal() {
+		Double precioFinal = this.calcularPrecioBase();
+		for (ServicioAdicional servicioAdicional : serviciosAdicional) {
+			precioFinal += servicioAdicional.calcularPrecio(this.cantDeInvitados);
+		}
+			
+		return precioFinal;
+		
+	}
 }

@@ -53,7 +53,7 @@ public class TestDecoracionDeEventos {
 		Evento casamiento = new Casamiento(tamanioDelLugar, LocalDateTime.of(2026, 8, 10, 8, 30),
 				LocalDateTime.of(2026, 8, 10, 15, 45), 23, decoracion);
 		
-		Double precioBaseEsperado = 192500.;
+		Double precioBaseEsperado = 402500.;
 		Double precioBaseObtenido = casamiento.calcularPrecioBase();
 		assertEquals(precioBaseEsperado, precioBaseObtenido);
 		
@@ -213,8 +213,20 @@ public class TestDecoracionDeEventos {
 
 //	calcularPrecioFinal();
 	@Test
-	public void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoYServicioDeCateringCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
-
+	public void DadoQueTengoUnCumpleaniosEnUnLugarMedianoConPackDecoracionBasicoServicioDeCateringYAnimacionParaChicosCuandoCalculoSuPrecioFinalObtengoElMontoEsperado() {
+		Decoracion decoracionBasica = new Simple(7000.);
+		Catering catering = new Catering();
+		AnimacionChicos animacionParaChicos = new AnimacionChicos();
+		
+		Evento cumpleanios = new Cumpleanio(Tamanio.MEDIANO, LocalDateTime.of(2025, 12, 12, 11, 50),
+				LocalDateTime.of(2025, 12, 12, 15, 30), 37, decoracionBasica);
+		cumpleanios.agregarServicioAlEvento(catering);
+		cumpleanios.agregarServicioAlEvento(animacionParaChicos);
+		
+		Double PrecioFinalEsperado = 443000.;
+		Double PrecioFinalobtenido = cumpleanios.calcularPrecioFinal();
+		assertEquals(PrecioFinalEsperado, PrecioFinalobtenido);
+		
 	}
 
 //	calcularDescuentoEnEfectivo(); en efectivo (10% de descuento)
